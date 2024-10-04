@@ -26,6 +26,7 @@ const handleHover = (event: React.MouseEvent<HTMLImageElement>) => {
   const target = event.currentTarget;
   target.style.transform = 'scale(1.05)'; 
   target.style.boxShadow = '0 6px 12px rgba(0, 0, 0, 0.3)'; 
+  target.style.cursor = 'pointer';
 };
 
 const handleLeave = (event: React.MouseEvent<HTMLImageElement>) => {
@@ -76,6 +77,8 @@ const handleLeave = (event: React.MouseEvent<HTMLImageElement>) => {
               alt={`Image ${index + 1}`} 
               className="grid-image" 
               onClick={() => handleClick("clk_base_image_".concat(index.toString().concat(".jpg")))}
+              onMouseEnter={handleHover}
+              onMouseLeave={handleLeave}
             />
           ))}
         </div>        
@@ -87,6 +90,8 @@ const handleLeave = (event: React.MouseEvent<HTMLImageElement>) => {
               alt={`Image ${index + 1}`} 
               className="grid-image" 
               onClick={() => handleClick("clk_image_".concat(index.toString().concat(".jpg")))}
+              onMouseEnter={handleHover}
+              onMouseLeave={handleLeave}
             />
           ))}
         </div>

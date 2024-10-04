@@ -24,8 +24,8 @@ const museoMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "VOS",
-  description: "VOS",
+  title: "HLTY Beings",
+  description: "The Hezalth Beings Collective",
 };
 
 export default function RootLayout({
