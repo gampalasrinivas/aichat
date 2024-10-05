@@ -2,6 +2,8 @@
 
 import React, { useEffect, useState } from 'react';
 import '../defaultpage.css'; // Import your CSS file
+import { Card } from 'antd';
+import ChatLayout from './ChatPage';
 
 const DefaultPage: React.FC = () => {
   const images = [
@@ -18,9 +20,17 @@ const hoverStyle = {
   },
 };  
   const handleClick = (alt: string) => {
-    alert(`You clicked on ${alt}`);
+    // alert(`You clicked on ${alt}`);
+    if(alt === 'clk_image_1.jpg'){
+      console.debug('Routing to /home/chat');
+      setChat(true);
+    }else{
+      console.debug('Not routing to chat section');
+    }
+
   };
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [chat, setChat] = useState(false)
 
 const handleHover = (event: React.MouseEvent<HTMLImageElement>) => {
   const target = event.currentTarget;
@@ -51,7 +61,11 @@ const handleLeave = (event: React.MouseEvent<HTMLImageElement>) => {
     position: 'relative', 
   };
 
-  return <div style={backgroundStyle}>
+  return (
+    
+    <>
+    {!chat &&
+    <div style={backgroundStyle}>
         <div  className="container">
       
       <div className="login">
@@ -97,7 +111,10 @@ const handleLeave = (event: React.MouseEvent<HTMLImageElement>) => {
         </div>
       </div>
     </div>
-  </div>;
+  </div>}
+  {chat && <ChatLayout></ChatLayout>}
+  </>
+  );
 };
 
 export default DefaultPage;
